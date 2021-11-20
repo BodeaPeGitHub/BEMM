@@ -14,7 +14,7 @@ class UserRepository:
     def delete(self, user):
         pass
 
-    def find_one(self, user):
+    def find_one(self, username):
         pass
 
     def find_all(self):

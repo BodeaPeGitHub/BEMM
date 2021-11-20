@@ -1,6 +1,6 @@
 class User:
-    def __init__(self, user_id, username, first_name, last_name, gender, birthday, weight, height):
-        self.__user_id = user_id
+    def __init__(self, username, first_name, last_name, gender, birthday, weight, height):
+        self.__user_id = 0
         self.__username = username
         self.__first_name = first_name
         self.__last_name = last_name
@@ -58,6 +58,9 @@ class User:
 
     def get_condition(self):
         return self.__condition
+
+    def set_user_id(self, user_id):
+        self.__user_id = user_id
 
     def set_username(self, username):
         self.__username = username
