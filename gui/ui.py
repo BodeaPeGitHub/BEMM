@@ -43,8 +43,12 @@ class RegisterWindow(Screen):
 
 class MainWindow(Screen):
     def addWater(self):
+        global user
+        user = service.find_one_by_username(user.get_username())
         glasses = int(self.ids.mainLabelNr.text)
         glasses+=1
+        print("id: ",user.get_user_id(),"glasses: ",glasses)
+        service.add_glasses(user.get_user_id())
         self.ids.mainLabelNr.text = str(glasses)
 
 
