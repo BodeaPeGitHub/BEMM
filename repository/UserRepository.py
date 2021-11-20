@@ -34,6 +34,7 @@ class UserRepository:
         conn = pyodbc.connect(self.__con_srt)
         cursor = conn.cursor()
         cursor.execute(f"update Users set {attribute} = {value} where id = {user_id}")
+        cursor.commit()
 
     def delete(self, user_id):
         conn = pyodbc.connect(self.__con_srt)
@@ -83,3 +84,9 @@ class UserRepository:
         for almost_user in users:
             all_user.append(self.__extract_user(almost_user))
         return all_user
+
+    def find_one_by_username(self, username):
+        conn = pyodbc.connect(self.__con_srt)
+        cursor = conn.cursor()
+        user = cursor.execute(f"select * from Users where username='{username}'").fetchall()
+        return self.__extract_user(user[0])
