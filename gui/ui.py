@@ -29,15 +29,15 @@ class SleepingWindow(Screen):
 class SportWindow(Screen):
     pass
 
+class RunWindow(Screen):
+    pass
+
 class WindowManager(ScreenManager):     
     pass
 
-kv = Builder.load_file('windows.kv')
+
+kv = Builder.load_file('gui/windows.kv')
 
 class MyApp(App):
     def build(self):
         return kv
-
-
-if __name__ == "__main__":
-    MyApp().run()
