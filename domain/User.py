@@ -1,3 +1,6 @@
+from domain.ConditionEnum import Condition
+
+
 class User:
     def __init__(self, username, first_name, last_name, gender, birthday, weight, height):
         self.__user_id = 0
@@ -14,21 +17,21 @@ class User:
 
     def __calculate_condition(self):
         if self.__bmi < 16:
-            self.__condition = "Severe Thinness"
+            self.__condition = Condition.severe_thinness
         elif self.__bmi < 17:
-            self.__condition = "Moderate Thinness"
+            self.__condition = Condition.moderate_thinness
         elif self.__bmi < 18.5:
-            self.__condition = "Mild Thinness"
+            self.__condition = Condition.mild_thinness
         elif self.__bmi < 25:
-            self.__condition = "Normal"
+            self.__condition = Condition.normal
         elif self.__bmi < 30:
-            self.__condition = "Overweight"
+            self.__condition = Condition.overweight
         elif self.__bmi < 35:
-            self.__condition = "Obese Class I"
+            self.__condition = Condition.obese_class_1
         elif self.__bmi < 40:
-            self.__condition = "Obese Class II"
+            self.__condition = Condition.obese_class_2
         else:
-            self.__condition = "Obese Class III"
+            self.__condition = Condition.obese_class_3
 
     def __add_habit(self, habit):
         self.__habits.append(habit)
