@@ -1,3 +1,4 @@
+from datetime import datetime
 from kivy.app import App
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.label import Label
@@ -8,9 +9,16 @@ from kivy.lang import Builder
 from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.core.window import Window
 from domain.User import User
+from controller.UserService import UserService
+from repository.UserRepository import UserRepository
+from domain.validator.UserValidator import UserValidator
+from datetime import date
 
 Window.size = (300,500)
 user = "caine"
+validator = UserValidator()
+repository = UserRepository("localhost", "BEMM")
+service = UserService(repository,validator)
 
 class FirstWindow(Screen):
     def afis(self):
@@ -24,15 +32,20 @@ class ProfileWindow(Screen):
 
 class RegisterWindow(Screen):
     def register(self):
-        # username = str(self.ids['username'].text)
-        # firstname = str(self.ids[firstname].text)
-        # lastname = str(self.ids.lastname.text)
-        # print(username)
-        print(self.ids)
+        global user
+        username = str(self.ids.username.text)
+        firstname = str(self.ids.firstname.text)
+        lastname = str(self.ids.lastname.text)
+        print(username,firstname,lastname)
+        user = User(username,firstname,lastname,"F",date.today(),50,210)
+        service.save(username,firstname,lastname,"F",date.today(),50,210)
 
 
 class MainWindow(Screen):
-    pass
+    def addWater(self):
+        glasses = int(self.ids.mainLabelNr.text)
+        glasses+=1
+        self.ids.mainLabelNr.text = str(glasses)
 
 
 class SleepingWindow(Screen):
