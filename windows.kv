@@ -1,0 +1,117 @@
+
+WindowManager:
+    FirstWindow:
+    LoginWindow:
+    RegisterWindow:
+
+<FirstWindow>:
+    name: "first"
+    BoxLayout:
+        orientation: "vertical"
+        size: root.width, root.height
+
+        Image: 
+            source: "logoBEMM.png"
+            font_size: 32
+            size_hint: (1,.5)
+        
+
+        GridLayout:
+            cols: 1
+            rows: 2
+
+            Button:
+                id: "buttonLoginScreen"
+                text: "login"
+                font_size: 32
+                size_hint: (.8,.5)
+                on_release: 
+                    app.root.current = "loginScreen" # change window to second
+                    root.manager.transition.direction = "left"
+                    root.afis()
+            Button:
+                id: "buttonRegisterScreen"
+                text: "register"
+                font_size: 32
+                size_hint: (.8,.5)
+                on_release: 
+                    app.root.current = "registerScreen" # change window to second
+                    root.manager.transition.direction = "left"
+                    root.afis()
+
+<LoginWindow>:
+    name: "registerScreen"
+    BoxLayout:
+        orientation: "vertical"
+        size: root.width, root.height
+
+        Label:
+            text: "register page"
+            #size_hint: (1,.5)
+            font_size: 20
+
+        Label:
+            text: "username"
+            #size_hint: (1,.2)
+
+        TextInput:
+            id: "username"
+            font_size: 15
+            #size_hint: (1,.2)
+        
+        Label:
+            text: "firstname"
+            #size_hint: (1,.2)
+
+        TextInput:
+            id: "firstname"
+            font_size: 15
+            #size_hint: (1,.2)
+        
+        Label:
+            text: "lastname"
+            #size_hint: (1,.2)
+
+        TextInput:
+            id: "lastname"
+            font_size: 15
+            #size_hint: (1,.2)
+
+        BoxLayout:
+            orientation: "horizontal"
+            Button:
+                id: "buttonRegister"
+                text: "Register"
+            Button:
+                id: "buttonBackRegister"
+                text: "Back"
+                on_release:      
+                    app.root.current = "first"
+                    root.manager.transition.direction = "right"
+        
+<RegisterWindow>:
+    name: "loginScreen"
+    BoxLayout:
+        orientation: "vertical"
+        
+        Label:
+            text: "login screen"
+        
+        Label:
+            text: "username"
+
+        TextInput:
+            font_size: 15
+
+        BoxLayout:
+            orientation: "horizontal"
+            Button:
+                id: "buttonLogin"
+                text: "Login"
+            Button:
+                id: "buttonBackLogin"
+                text: "Back"
+                on_release:      
+                    app.root.current = "first" 
+                    root.manager.transition.direction = "right"
+
