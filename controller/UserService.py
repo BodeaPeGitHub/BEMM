@@ -63,6 +63,9 @@ class UserService:
     def find_all(self):
         self.__user_repository.find_all()
 
+    def find_one_by_username(self, username):
+        return self.__user_repository.find_one_by_username(username)
+
     def add_glasses(self, user_id):
         user = self.__user_repository.find_one(user_id)
         self.__user_repository\
