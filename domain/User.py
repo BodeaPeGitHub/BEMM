@@ -10,6 +10,7 @@ class User:
         self.__weight = weight
         self.__bmi = (weight / (height * height)) * 10000
         self.__calculate_condition()
+        self.__habits = []
 
     def __calculate_condition(self):
         if self.__bmi < 16:
@@ -28,6 +29,9 @@ class User:
             self.__condition = "Obese Class II"
         else:
             self.__condition = "Obese Class III"
+
+    def __add_habit(self, habit):
+        self.__habits.append(habit)
 
     def get_user_id(self):
         return self.__user_id
