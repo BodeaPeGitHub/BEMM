@@ -41,10 +41,10 @@ class UserRepository:
         cursor.execute(f"delete from Users where id={user_id}")
         cursor.commit()
 
-    def find_one(self, username):
+    def find_one(self, user_id):
         conn = pyodbc.connect(self.__con_srt)
         cursor = conn.cursor()
-        user = cursor.execute(f"select * from Users where username='{username}'").fetchall()
+        user = cursor.execute(f"select * from Users where id={user_id}").fetchall()
         return self.__extract_user(user[0])
 
     def __extract_user(self, item):
