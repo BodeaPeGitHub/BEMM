@@ -25,28 +25,28 @@ class SportingHabit:
             if self.__condition == Condition.normal:
                 self.__squats = 30
                 self.__push_ups = 20
-            if self.__condition == Condition.mild_thinness or self.__condition == Condition.overweight:
+            if self.__condition in [Condition.mild_thinness, self.__condition == Condition.overweight]:
                 self.__squats = 25
                 self.__push_ups = 17
-            if self.__condition == Condition.moderate_thinness or self.__condition == Condition.obese_class_1:
+            if self.__condition in [Condition.moderate_thinness, self.__condition == Condition.obese_class_1]:
                 self.__squats = 20
                 self.__push_ups = 15
-            if self.__condition == Condition.severe_thinness or self.__condition == Condition.obese_class_2:
+            if self.__condition in [Condition.severe_thinness, self.__condition == Condition.obese_class_2]:
                 self.__squats = 15
                 self.__push_ups = 13
-            if self.__condition == Condition.obese_class_3:
+            if self.__condition is Condition.obese_class_3:
                 self.__squats = 13
                 self.__push_ups = 10
         else:
             if self.__condition == Condition.normal:
                 self.__squats = 50
-            if self.__condition == Condition.mild_thinness or self.__condition == Condition.overweight:
+            if self.__condition in [Condition.mild_thinness, self.__condition == Condition.overweight]:
                 self.__squats = 45
-            if self.__condition == Condition.moderate_thinness or self.__condition == Condition.obese_class_1:
+            if self.__condition in [Condition.moderate_thinness, self.__condition == Condition.obese_class_1]:
                 self.__squats = 40
-            if self.__condition == Condition.severe_thinness or self.__condition == Condition.obese_class_2:
+            if self.__condition in [Condition.severe_thinness, self.__condition == Condition.obese_class_2]:
                 self.__squats = 35
-            if self.__condition == Condition.obese_class_3:
+            if self.__condition is Condition.obese_class_3:
                 self.__squats = 30
             self.__push_ups = self.__squats - 20
         self.__crunches = self.__squats
