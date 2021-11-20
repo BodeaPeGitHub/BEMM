@@ -1,6 +1,6 @@
-from domain.ConditionEnum import Condition
-from domain.GenderEnum import Gender
-from domain.StatusEnum import Status
+from domain.enums.ConditionEnum import Condition
+from domain.enums.GenderEnum import Gender
+from domain.enums.StatusEnum import Status
 
 
 class RunningHabit:

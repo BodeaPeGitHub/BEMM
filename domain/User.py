@@ -1,19 +1,48 @@
-from domain.ConditionEnum import Condition
+import datetime
+
+from domain.habits.RunningHabit import RunningHabit
+from domain.habits.SleepingHabit import SleepingHabit
+from domain.habits.SportingHabit import SportingHabit
+from domain.habits.WaterHabit import WaterHabit
+from domain.enums.ConditionEnum import Condition
 
 
 class User:
+
     def __init__(self, username, first_name, last_name, gender, birthday, weight, height):
         self.__user_id = 0
         self.__username = username
         self.__first_name = first_name
         self.__last_name = last_name
-        self.gender = gender
+        self.__gender = gender
         self.__birthday = birthday
-        self.__height = height
-        self.__weight = weight
-        self.__bmi = (weight / (height * height)) * 10000
+        self.__height = int(height)
+        self.__weight = int(weight)
+        self.__bmi = (self.__weight / (self.__height * self.__height)) * 10000
+        self.__running_habit = ""
+        self.__sleeping_habit = ""
+        self.__sporting_habit = ""
+        self.__water_habit = ""
         self.__calculate_condition()
-        self.__habits = []
+        self.__adding_habits()
+
+    def __adding_habits(self):
+        self.__running_habit = RunningHabit(self.__condition, self.__gender)
+        self.__sleeping_habit = SleepingHabit(self.__birthday)
+        self.__sporting_habit = SportingHabit(self.__gender, self.__condition)
+        self.__water_habit = WaterHabit(self.__weight)
+
+    def get_running_habit(self):
+        return self.__running_habit
+
+    def get_sleeping_habit(self):
+        return self.__sleeping_habit
+
+    def get_sporting_habit(self):
+        return self.__sporting_habit
+
+    def get_water_habit(self):
+        return self.__water_habit
 
     def __calculate_condition(self):
         if self.__bmi < 16:
@@ -33,9 +62,6 @@ class User:
         else:
             self.__condition = Condition.obese_class_3
 
-    def __add_habit(self, habit):
-        self.__habits.append(habit)
-
     def get_user_id(self):
         return self.__user_id
 
@@ -49,7 +75,7 @@ class User:
         return self.__last_name
 
     def get_gender(self):
-        return self.gender
+        return self.__gender
 
     def get_birthday(self):
         return self.__birthday
@@ -85,6 +111,10 @@ class User:
     def set_height(self, height):
         self.__height = height
         self.__calculate_condition()
+
+    def __str__(self):
+        jumping_jacks, squats, crunches, push_ups = self.__sporting_habit.get_actual_workout()
+        return f"{self.__user_id} | {self.__username} | {self.__first_name} | {self.__last_name} | {self.__gender} | {self.__height} | {self.__birthday} | {self.__weight} | {self.__running_habit.get_minutes_ran()} |  {self.__sleeping_habit.get_hours_slept()} | {self.__water_habit.get_number_of_glasses_drunk()} | {jumping_jacks} | {squats} | {crunches} | {push_ups}"
 
     def __eq__(self, o):
         return isinstance(o, User) and self.__user_id == o.__user_id and self.__username == o.__username

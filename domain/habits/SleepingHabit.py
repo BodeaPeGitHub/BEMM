@@ -1,12 +1,13 @@
-from domain.StatusEnum import Status
+import datetime
+
+from domain.enums.StatusEnum import Status
 from datetime import date
 
 
 class SleepingHabit:
-    def __init__(self, birth_date, sleeping_habit_id):
+    def __init__(self, birth_date):
         self.__status = Status.not_started
         self.__birth_date = birth_date
-        self.__sleeping_habit_id = sleeping_habit_id
         self.__number_of_hours_slept = 0
         self.__number_of_hours = self.__compute_sleeping_time()
 
@@ -16,17 +17,19 @@ class SleepingHabit:
     def set_status(self, status):
         self.__status = status
 
-    def get_sleeping_habit_id(self):
-        return self.__sleeping_habit_id
-
     def get_hours_slept(self):
         return self.__number_of_hours_slept
+
+    def set_number_hour_slept(self, new_number):
+        self.__number_of_hours_slept = new_number
 
     def add_slept_time(self, hours):
         self.__number_of_hours_slept = self.__number_of_hours_slept + hours
 
     def __compute_sleeping_time(self):
-        age = self.__birth_date - date.today
+        today = datetime.date.today()
+        born = self.__birth_date
+        age = today.year - born.year - ((today.month, today.day) < (born.month, born.day))
         if age <= 13:
             return 9, 11
         if age <= 17:

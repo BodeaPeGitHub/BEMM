@@ -1,20 +1,28 @@
-# This is a sample Python script.
-
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
-from datetime import date
+import datetime
 
 from domain.User import User
+from repository.UserRepository import UserRepository
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+def test_db():
+    repo = UserRepository("localhost\SQLEXPRESS", "BEMM")
+    user = User("Matei21", "Matei", "Birjovanu", "M", datetime.date(2001, 2, 21), 63, 90)
+    user.set_user_id(35)
+    user.get_running_habit().set_minutes_ran(2)
+    user.get_sleeping_habit().set_number_hour_slept(3)
+    user.get_water_habit().set_glass_of_water_drunk(4)
+    sporting = user.get_sporting_habit()
+    sporting.set_jumping_jacks(5)
+    sporting.set_squats(6)
+    sporting.set_crunches(7)
+    sporting.set_push_ups(8)
+    repo.update(user)
+    repo.delete(34)
+    for user in repo.find_all():
+        print(user)
+    repo.find_one("Mara")
 
 
-# Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    print_hi('PyCharm')
-    user = User("mara", "Mara", "Gheorghe", date(2001, 3, 22), 55, 170)
-    print(user.get_condition())
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    test_db()
+    print('Totul merge ca pe roate.')
