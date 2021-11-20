@@ -26,7 +26,7 @@ WindowManager:
             rows: 2
 
             Button:
-                id: "buttonLoginScreen"
+                id: buttonLoginScreen
                 text: "login"
                 font_size: 32
                 on_release: 
@@ -35,7 +35,7 @@ WindowManager:
                     root.afis()
     
             Button:
-                id: "buttonRegisterScreen"
+                id: buttonRegisterScreen
                 text: "register"
                 font_size: 32
                 on_release: 
@@ -51,7 +51,6 @@ WindowManager:
 
         Label:
             text: "register page"
-            #size_hint: (1,.5)
             font_size: 20
 
         Label:
@@ -84,14 +83,14 @@ WindowManager:
         BoxLayout:
             orientation: "horizontal"
             Button:
-                id: "buttonRegister"
+                id: buttonRegister
                 text: "Register"
                 on_release:
                     app.root.current = "mainScreen"
                     root.manager.transition.direction = "up"
                     root.register()
             Button:
-                id: "buttonBackRegister"
+                id: buttonBackRegister
                 text: "Back"
                 on_release:      
                     app.root.current = "first"
@@ -114,13 +113,13 @@ WindowManager:
         BoxLayout:
             orientation: "horizontal"
             Button:
-                id: "buttonLogin"
+                id: buttonLogin
                 text: "Login"
                 on_release:
                     app.root.current = "mainScreen"
                     root.manager.transition.direction = "up"
             Button:
-                id: "buttonBackLogin"
+                id: buttonBackLogin
                 text: "Back"
                 on_release:      
                     app.root.current = "first" 
@@ -153,14 +152,14 @@ WindowManager:
                 source: "gui/static/glass.png"
 
             Label:
-                id: "mainLabelNr"
+                id: mainLabelNr
                 text: "NR"
 
             Label:
                 text: "/"
 
             Label:
-                id: "mainLabelTotal"
+                id: mainLabelTotal
                 text: "NR"      
 
             Button:
@@ -219,7 +218,7 @@ WindowManager:
                 Button:
                     font_size: 15
                     size_hint: 1, 0.5
-                    id: "whenToGoToSleep"
+                    id: whenToGoToSleep
                     text: "When to go to sleep:"
                 Label:
                     size_hint: 1, 0.4
@@ -228,7 +227,7 @@ WindowManager:
                 Button:
                     font_size: 15
                     size_hint: 1, 0.5
-                    id: "goodSleep"
+                    id: goodSleep
                     text: "I slept enough! :)"
 
             Label:
@@ -240,7 +239,7 @@ WindowManager:
                 Button:
                     font_size: 15
                     size_hint: 1, 0.5
-                    id: "buttonBackMain"
+                    id: buttonBackMain
                     text: "Back"
                     on_release:
                         app.root.current = "mainScreen"
@@ -262,12 +261,12 @@ WindowManager:
                         size_hint: (.2, None)
                         height: 35
                         multiline: False
-                        id: "minuteToGoToSleep"
+                        id: minuteToGoToSleep
                         font_size: 12
                 Button:
                     font_size: 15
                     size_hint: 1, 0.5
-                    id: "whenToWakeUp"
+                    id: whenToWakeUp
                     text: "When to wake up: "
                 Label:
                     size_hint: 1, 0.4
@@ -276,7 +275,7 @@ WindowManager:
                 Button:
                     font_size: 15
                     size_hint: 1, 0.5
-                    id: "badSleep"
+                    id: badSleep
                     text: "I didn't succeed\n this time.. :("
 
 <SportWindow>:
@@ -294,7 +293,7 @@ WindowManager:
                 #size_hint: (1,.5)
                 font_size: 20
             Button:
-                id: "buttonBackMain"
+                id: buttonBackMain
                 text: "Back"
                 on_release:
                     app.root.current = "mainScreen"
@@ -304,7 +303,7 @@ WindowManager:
             orientation: "horizontal"
 
             Label:
-                id: "actual_jumping_jacks"
+                id: actual_jumping_jacks
                 text: "NR"
                 font_size: 15
 
@@ -313,7 +312,7 @@ WindowManager:
                 font_size: 15
 
             Label:
-                id:  "to_do_jumping_jacks"
+                id:  to_do_jumping_jacks
                 text:  "NR"
                 font_size: 15
 
@@ -321,12 +320,12 @@ WindowManager:
                 orientation: "vertical"
 
                 TextInput:
-                    id: "nr_jumping_jacks"
+                    id: nr_jumping_jacks
                     font_size: 15
                     #size_hint: (1,.2)
 
                 Button:
-                    id: "button_jumping_jacks"
+                    id: button_jumping_jacks
                     text: "+"
                     size_hint: (1,.5)
 
@@ -337,7 +336,7 @@ WindowManager:
             orientation: "horizontal"
 
             Label:
-                id: "actual_squats"
+                id: actual_squats
                 text: "NR"
                 font_size: 15
 
@@ -346,7 +345,7 @@ WindowManager:
                 font_size: 15
 
             Label:
-                id: "to_do_squats"
+                id: to_do_squats
                 text: "NR"
                 font_size: 15
 
@@ -354,12 +353,12 @@ WindowManager:
                 orientation: "vertical"
 
                 TextInput:
-                    id: "nr_squats"
+                    id: nr_squats
                     font_size: 15
                     #size_hint: (1,.2)
 
                 Button:
-                    id: "button_squats"
+                    id: button_squats
                     text: "+"
                     size_hint: (1,.5)
 
@@ -370,7 +369,7 @@ WindowManager:
             orientation: "horizontal"
 
             Label:
-                id: "actual_crunches"
+                id: actual_crunches
                 text: "NR"
                 font_size: 15
 
@@ -379,7 +378,7 @@ WindowManager:
                 font_size: 15
 
             Label:
-                id: "to_do_crunches"
+                id: to_do_crunches
                 text: "NR"
                 font_size: 15
 
@@ -387,12 +386,12 @@ WindowManager:
                 orientation: "vertical"
 
                 TextInput:
-                    id: "nr_crunches"
+                    id: nr_crunches
                     font_size: 15
                     #size_hint: (1,.2)
 
                 Button:
-                    id: "button_crunches"
+                    id: button_crunches
                     text: "+"
                     size_hint: (1,.5)
 
@@ -403,7 +402,7 @@ WindowManager:
             orientation: "horizontal"
 
             Label:
-                id: "actual_push_ups"
+                id: actual_push_ups
                 text: "NR"
                 font_size: 15
 
@@ -412,7 +411,7 @@ WindowManager:
                 font_size: 15
 
             Label:
-                id: "to_do_push_ups"
+                id: to_do_push_ups
                 text: "NR"
                 font_size: 15
 
@@ -420,12 +419,12 @@ WindowManager:
                 orientation: "vertical"
 
                 TextInput:
-                    id: "nr_push_ups"
+                    id: nr_push_ups
                     font_size: 15
                     #size_hint: (1,.2)
 
                 Button:
-                    id: "button_push_ups"
+                    id: button_push_ups
                     text: "+"
                     size_hint: (1,.5)
 
@@ -444,13 +443,13 @@ WindowManager:
             Label:
                 text: "Username"
             Label:
-                id: "usernameField"
+                id: usernameField
                 text: "Username"
         BoxLayout:
             orientation:"horizontal"
             Label:
                 text: "First Name"
             Label:
-                id: "firstNameField"
+                id: firstNameField
                 text: "First Name"
     
