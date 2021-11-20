@@ -11,6 +11,9 @@ class SleepingHabit:
         self.__number_of_hours_slept = 0
         self.__number_of_hours = self.__compute_sleeping_time()
 
+    def get_number_of_hours(self):
+        return self.__number_of_hours
+
     def get_status(self):
         return self.__status
 

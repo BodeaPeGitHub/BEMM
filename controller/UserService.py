@@ -67,3 +67,36 @@ class UserService:
         user = self.__user_repository.find_one(user_id)
         self.__user_repository\
             .update_attribute("glasses_drank", user.get_water_habit().get_number_of_glasses_drunk() + 1, user_id)
+
+    def return_number_of_glasses(self, user_id):
+        user = self.__user_repository.find_one(user_id)
+        return user.get_water_habit().get_number_of_glasses()
+
+    def achieved_water_habit(self, user_id):
+        user = self.__user_repository.find_one(user_id)
+        return user.get_water_habit().get_number_of_glasses() <= user.get_water_habit().get_number_of_glasses_drunk()
+
+    def add_running_time(self, user_id, running_time):
+        user = self.__user_repository.find_one(user_id)
+        self.__user_repository.update_attribute("minutes_run", user.get_running_habit().get_minutes_ran() + running_time, user_id)
+
+    def return_running_time(self, user_id):
+        user = self.__user_repository.find_one(user_id)
+        return user.get_running_habit().running_time()
+
+    def achieved_running_habit(self, user_id):
+        user = self.__user_repository.find_one(user_id)
+        return user.get_running_habit().running_time() <= user.get_running_habit().get_minutes_ran()
+
+    def return_sleeping_habit(self, user_id):
+        user = self.__user_repository.find_one(user_id)
+        return user.get_sleeping_habit().get_number_of_hours()
+
+    def calculate_when_to_wake_up(self, user_id, time):
+        pass
+
+    def calculate_when_to_go_to_sleep(self, user_id, time):
+        pass
+
+
+
