@@ -18,7 +18,7 @@ class SleepingHabit:
         self.__status = status
 
     def get_sleeping_habit_id(self):
-        return self.__sleeping_habit_ids
+        return self.__sleeping_habit_id
 
     def get_hours_slept(self):
         return self.__number_of_hours_slept
@@ -26,7 +26,7 @@ class SleepingHabit:
     def add_slept_time(self,hours):
         self.__number_of_hours_slept = self.__number_of_hours_slept + hours
 
-    def ___compute_sleeping_time(self):
+    def __compute_sleeping_time(self):
         age = self.__birth_date - date.today
         if self.__age <= 13:
             return 9,11
