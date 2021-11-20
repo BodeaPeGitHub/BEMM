@@ -62,3 +62,8 @@ class UserService:
 
     def find_all(self):
         self.__user_repository.find_all()
+
+    def add_glasses(self, user_id):
+        user = self.__user_repository.find_one(user_id)
+        self.__user_repository\
+            .update_attribute("glasses_drank", user.get_water_habit().get_number_of_glasses_drunk() + 1, user_id)

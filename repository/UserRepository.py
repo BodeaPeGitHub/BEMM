@@ -30,16 +30,21 @@ class UserRepository:
         cursor.execute(f"update Users set minutes_run={user.get_running_habit().get_minutes_ran()}, sleeping_time={user.get_sleeping_habit().get_hours_slept()}, glasses_drank={user.get_water_habit().get_number_of_glasses_drunk()}, jumping_jacks={jumping_jacks}, squats={squats}, crunches={crunches}, push_ups={push_ups} where id={user.get_user_id()}")
         cursor.commit()
 
+    def update_attribute(self, attribute, value, user_id):
+        conn = pyodbc.connect(self.__con_srt)
+        cursor = conn.cursor()
+        cursor.execute(f"update Users set {attribute} = {value} where id = {user_id}")
+
     def delete(self, user_id):
         conn = pyodbc.connect(self.__con_srt)
         cursor = conn.cursor()
         cursor.execute(f"delete from Users where id={user_id}")
         cursor.commit()
 
-    def find_one(self, username):
+    def find_one(self, user_id):
         conn = pyodbc.connect(self.__con_srt)
         cursor = conn.cursor()
-        user = cursor.execute(f"select * from Users where username='{username}'").fetchall()
+        user = cursor.execute(f"select * from Users where id={user_id}").fetchall()
         return self.__extract_user(user[0])
 
     def __extract_user(self, item):
