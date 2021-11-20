@@ -1,0 +1,155 @@
+WindowManager:
+    SportWindow:
+
+<FirstWindow>:
+    name: "sportScreen"
+
+    GridLayout:
+        cols: 1
+        rows: 5
+        spacing: 20
+
+        Label:
+            text: "WORKOUT"
+            #size_hint: (1,.5)
+            font_size: 20
+
+        BoxLayout:
+                orientation: "horizontal"
+
+                Label:
+                    id: "actual_jumping_jacks"
+                    text: "NR"
+                    font_size: 15
+
+                Label:
+                    text: "/"
+                    font_size: 15
+
+                Label:
+                    id = "to_do_jumping_jacks"
+                    text = "NR"
+                    font_size: 15
+
+                BoxLayout:
+                    orientation: "vertical"
+
+                    TextInput:
+                        id: "nr_jumping_jacks"
+                        font_size: 15
+                        #size_hint: (1,.2)
+
+                    Button
+                        id: "button_jumping_jacks"
+                        text: "+"
+                        size_hint: (.8,.5)
+
+                Image:
+                    source: ""
+                    anim_delay: -1
+                    anim_loop: 1
+
+        BoxLayout:
+                orientation: "horizontal"
+
+                Label:
+                    id: "actual_squats"
+                    text: "NR"
+                    font_size: 15
+
+                Label:
+                    text: "/"
+                    font_size: 15
+
+                Label:
+                    id = "to_do_squats"
+                    text = "NR"
+                    font_size: 15
+
+                BoxLayout:
+                    orientation: "vertical"
+
+                    TextInput:
+                        id: "nr_squats"
+                        font_size: 15
+                        #size_hint: (1,.2)
+
+                    Button
+                        id: "button_squats"
+                        text: "+"
+                        size_hint: (.8,.5)
+
+                Image:
+                    source: ""
+                    anim_delay: -1
+                    anim_loop: 1
+
+        BoxLayout:
+                orientation: "horizontal"
+
+                Label:
+                    id: "actual_crunches"
+                    text: "NR"
+                    font_size: 15
+
+                Label:
+                    text: "/"
+                    font_size: 15
+
+                Label:
+                    id = "to_do_crunches"
+                    text = "NR"
+                    font_size: 15
+
+                BoxLayout:
+                    orientation: "vertical"
+
+                    TextInput:
+                        id: "nr_crunches"
+                        font_size: 15
+                        #size_hint: (1,.2)
+
+                    Button
+                        id: "button_crunches"
+                        text: "+"
+                        size_hint: (.8,.5)
+
+                Image:
+                    source: ""
+                    anim_delay: -1
+                    anim_loop: 1
+
+        BoxLayout:
+                orientation: "horizontal"
+
+                Label:
+                    id: "actual_push_ups"
+                    text: "NR"
+                    font_size: 15
+
+                Label:
+                    text: "/"
+                    font_size: 15
+
+                Label:
+                    id = "to_do_push_ups"
+                    text = "NR"
+                    font_size: 15
+
+                BoxLayout:
+                    orientation: "vertical"
+
+                    TextInput:
+                        id: "nr_push_ups"
+                        font_size: 15
+                        #size_hint: (1,.2)
+
+                    Button
+                        id: "button_push_ups"
+                        text: "+"
+                        size_hint: (.8,.5)
+
+                Image:
+                    source: ""
+                    anim_delay: -1
+                    anim_loop: 1

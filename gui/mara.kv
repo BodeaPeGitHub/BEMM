@@ -8,15 +8,23 @@ WindowManager:
         orientation: "vertical"
         size: root.width, root.height
 
-        Label:
-            text: "SLEEPING"
-            #size_hint: (1, .5)
-            font_size: 22
+        BoxLayout:
+            orientation: "horizontal"
+            Label:
+                text: "SLEEPING"
+                #size_hint: (1, .5)
+                font_size: 20
+            Button:
+                id: "buttonBackMain"
+                text: "Back"
+                on_release:
+                     app.root.current = "?"
+                     root.manager.transition.direction = "left"
 
         BoxLayout:
             orientation: "horizontal"
             Label:
-                text: "When do you want to wake up?"
+                text: "Wake up hour:"
                 #size_hint: (1, .2)
                 font_size : 15
             TextInput:
@@ -28,7 +36,7 @@ WindowManager:
             orientation: "horizontal"
             Button:
                 id: "whenToGoToSleep"
-                text: "Find out when to go to sleep: "
+                text: "When to go to sleep:"
             Label:
                 text: "TO DO"
                 #size_hint: (1, .2)
@@ -37,7 +45,7 @@ WindowManager:
         BoxLayout:
             orientation: "horizontal"
             Label:
-                text: "When do you want to go to sleep?"
+                text: "Hour to go to sleep:"
                 #size_hint: (1, .2)
                 font_size : 15
             TextInput:
@@ -49,7 +57,7 @@ WindowManager:
             orientation: "horizontal"
             Button:
                 id: "whenToWakeUp"
-                text: "Find out when to go to sleep: "
+                text: "When to wake up: "
             Label:
                 text: "TO DO"
                 #size_hint: (1, .2)
@@ -63,8 +71,3 @@ WindowManager:
             Button:
                 id: "badSleep"
                 text: "I didn't succeed this time.. :()"
-
-        Button:
-                id: "buttonBackLogin"
-                text: "Back"
-
