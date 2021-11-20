@@ -4,6 +4,9 @@
 # Press Shift+F10 to execute it or replace it with your code.
 # Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
 from datetime import date
+
+from controller.UserService import UserService
+from domain.validator.UserValidator import UserValidator
 from gui.ui import MyApp
 import datetime
 from domain.User import User
@@ -25,6 +28,10 @@ def test_db():
 if __name__ == '__main__':
     #test_db()
     #print('Totul merge ca pe roate.')
+    repo = UserRepository("localhost", "BEMM")
+    val = UserValidator()
+    service = UserService(repo, val)
+    service.add_glasses(1)
     ui = MyApp()
     ui.run()
     

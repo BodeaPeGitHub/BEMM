@@ -34,6 +34,7 @@ class UserRepository:
         conn = pyodbc.connect(self.__con_srt)
         cursor = conn.cursor()
         cursor.execute(f"update Users set {attribute} = {value} where id = {user_id}")
+        cursor.commit()
 
     def delete(self, user_id):
         conn = pyodbc.connect(self.__con_srt)
