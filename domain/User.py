@@ -19,10 +19,10 @@ class User:
         self.__height = int(height)
         self.__weight = int(weight)
         self.__bmi = (self.__weight / (self.__height * self.__height)) * 10000
-        self.__running_habit = ""
-        self.__sleeping_habit = ""
-        self.__sporting_habit = ""
-        self.__water_habit = ""
+        self.__running_habit = None
+        self.__sleeping_habit = None
+        self.__sporting_habit = None
+        self.__water_habit = None
         self.__calculate_condition()
         self.__adding_habits()
 
