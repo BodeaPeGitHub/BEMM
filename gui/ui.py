@@ -20,6 +20,15 @@ class LoginWindow(Screen):
 class RegisterWindow(Screen):
     pass
 
+class MainWindow(Screen):
+    pass
+
+class SleepingWindow(Screen):
+    pass
+
+class SportWindow(Screen):
+    pass
+
 class WindowManager(ScreenManager):     
     pass
 
