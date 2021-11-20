@@ -83,3 +83,9 @@ class UserRepository:
         for almost_user in users:
             all_user.append(self.__extract_user(almost_user))
         return all_user
+
+    def find_one_by_username(self, username):
+        conn = pyodbc.connect(self.__con_srt)
+        cursor = conn.cursor()
+        user = cursor.execute(f"select * from Users where username='{username}'").fetchall()
+        return self.__extract_user(user[0])
