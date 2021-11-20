@@ -6,6 +6,7 @@ WindowManager:
     MainWindow:
     SportWindow:
     SleepingWindow:
+    ProfileWindow
 
 <FirstWindow>:
     name: "first"
@@ -140,6 +141,9 @@ WindowManager:
 
         Button:
             text: "Profile"
+            on_release:
+                app.root.current = "profileScreen"
+                root.manager.transition.direction = "right"
         
         BoxLayout: #layout water
             orientation: "horizontal"
@@ -327,8 +331,6 @@ WindowManager:
 
             Image:
                 source: "gui/static/sport1.jpg"
-                anim_delay: -1
-                anim_loop: 1
 
         BoxLayout:
             orientation: "horizontal"
@@ -362,8 +364,6 @@ WindowManager:
 
             Image:
                 source: "gui/static/sport2.jfif"
-                anim_delay: -1
-                anim_loop: 1
 
         BoxLayout:
             orientation: "horizontal"
@@ -397,8 +397,6 @@ WindowManager:
 
             Image:
                 source: "gui/static/sport3.jpg"
-                anim_delay: -1
-                anim_loop: 1
 
         BoxLayout:
             orientation: "horizontal"
@@ -432,12 +430,26 @@ WindowManager:
 
             Image:
                 source: "gui/static/sport4.jfif"
-                anim_delay: -1
-                anim_loop: 1
 
+<ProfileWindow>:
+    name: "profileScreen"
 
-        
-
-
-
+    BoxLayout:
+        orientation: "vertical"
+        Label:
+            text: "YOUR PROFILE"
+        BoxLayout:
+            orientation:"horizontal"
+            Label:
+                text: "Username"
+            Label:
+                id: "usernameField"
+                text: "Username"
+        BoxLayout:
+            orientation:"horizontal"
+            Label:
+                text: "First Name"
+            Label:
+                id: "firstNameField"
+                text: "First Name"
     
