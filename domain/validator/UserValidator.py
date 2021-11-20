@@ -2,8 +2,7 @@ from domain.exceptions.Exceptions import ValidationException
 
 
 class UserValidator:
-    def __init__(self, user):
-        self.__user = user
+    def __init__(self):
 
     def validate(self):
         error = ""
