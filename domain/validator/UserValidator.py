@@ -2,9 +2,6 @@ from domain.exceptions.Exceptions import ValidationException
 
 
 class UserValidator:
-    def __init__(self, user):
-        self.__user = user
-
     def validate(self):
         error = ""
         if self.__user.get_first_name() == "":
