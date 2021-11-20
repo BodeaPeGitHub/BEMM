@@ -43,7 +43,7 @@ WindowManager:
                     root.manager.transition.direction = "left"
                     root.afis()
 
-<LoginWindow>:
+<RegisterWindow>:
     name: "registerScreen"
     BoxLayout:
         orientation: "vertical"
@@ -59,7 +59,7 @@ WindowManager:
             #size_hint: (1,.2)
 
         TextInput:
-            id: "username"
+            id: username
             font_size: 10
             #size_hint: (1,.2)
         
@@ -68,7 +68,7 @@ WindowManager:
             #size_hint: (1,.2)
 
         TextInput:
-            id: "firstname"
+            id: firstname
             font_size: 10
             #size_hint: (1,.2)
         
@@ -77,7 +77,7 @@ WindowManager:
             #size_hint: (1,.2)
 
         TextInput:
-            id: "lastname"
+            id: lastname
             font_size: 10
             #size_hint: (1,.2)
 
@@ -96,7 +96,7 @@ WindowManager:
                     app.root.current = "first"
                     root.manager.transition.direction = "right"
         
-<RegisterWindow>:
+<LoginWindow>:
     name: "loginScreen"
     BoxLayout:
         orientation: "vertical"
