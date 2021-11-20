@@ -3,8 +3,7 @@ from domain.StatusEnum import Status
 
 
 class WaterHabit:
-    def __init__(self, water_habit_id, weight):
-        self.__water_habit_id = water_habit_id
+    def __init__(self, weight):
         self.__status = Status.not_started
         self.__number_of_glassed_drunk = 0
         self.__calculate_number_of_glasses()
@@ -12,9 +11,6 @@ class WaterHabit:
 
     def __calculate_number_of_glasses(self):
         self.__number_of_glasses = math.ceil((self.__weight * 2.2 * 67) // 8)
-
-    def get_water_habit_id(self):
-        return self.__water_habit_id
 
     def get_status(self):
         return self.__status
