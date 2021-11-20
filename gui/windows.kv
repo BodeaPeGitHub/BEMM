@@ -181,6 +181,11 @@ WindowManager:
             on_release:
                 app.root.current = "sleepingScreen" 
                 root.manager.transition.direction = "right"
+        Button:
+            text: "Log out"
+            on_release:
+                app.root.current = "first"
+                root.manager.transition.direction = "down"
 
 
 <SleepingWindow>:
@@ -435,61 +440,53 @@ WindowManager:
 
 <ProfileWindow>:
     name: "profileScreen"
+    GridLayout:
+        cols: 2
+        rows: 9
+        spacing: '10dp'
+        Label:
+            text: "YOUR PROFILE"
+        Button:
+            id: buttonBackMain
+            text: "Back"
+            on_release:
+                app.root.current = "mainScreen"
+                root.manager.transition.direction = "left"
+        Label
+        Label
+        Label:
+            text: "Username"
+        TextInput:
+            id: usernameField
+            text: "Username"
+        Label:
+            text: "First Name"
+        TextInput:
+            id: firstNameField
+            text: "First Name"
+        Label:
+            text: "Last Name"
+        TextInput:
+            id: lastNameField
+            text: "Last Name"
+        Label:
+            text: "Gender"
+        TextInput:
+            id: genderField
+            text: "Gender"
+        Label:
+            text: "Height"
+        TextInput:
+            id: heightField
+            text: "Height"
+        Label:
+            text: "Weight"
+        TextInput:
+            id: weightField
+            text: "Weight"
+        Label:
+            text: "Condition"
+        TextInput:
+            id: conditionField
+            text: "Condition"
 
-    BoxLayout:
-        orientation: "vertical"
-        BoxLayout:
-            orientation: "horizontal"
-            Label:
-                text: "YOUR PROFILE"
-            Button:
-                id: buttonBackMain
-                text: "Back"
-                on_release:
-                    app.root.current = "mainScreen"
-                    root.manager.transition.direction = "left"
-        GridLayout:
-            cols: 3
-            rows: 7
-            Label:
-                text: "Username"
-            TextInput:
-                id: usernameField
-                text: "Username"
-            Label
-            Label:
-                text: "First Name"
-            TextInput:
-                id: firstNameField
-                text: "First Name"
-            Label
-            Label:
-                text: "Last Name"
-            TextInput:
-                id: lastNameField
-                text: "Last Name"
-            Label
-            Label:
-                text: "Gender"
-            TextInput:
-                id: genderField
-                text: "Gender"
-            Label
-            Label:
-                text: "Birthday"
-            TextInput:
-                id: birthdayField
-                text: "Birthday"
-            Label
-            Label:
-                text: "Weight"
-            TextInput:
-                id: weightField
-                text: "Weight"
-            Label
-            Label:
-                text: "Height"
-            TextInput:
-                id: heightField
-                text: "Height"
-            Label
