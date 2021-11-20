@@ -3,6 +3,9 @@ WindowManager:
     FirstWindow:
     LoginWindow:
     RegisterWindow:
+    MainWindow:
+    SportWindow:
+    SleepingWindow:
 
 <FirstWindow>:
     name: "first"
@@ -11,12 +14,13 @@ WindowManager:
         size: root.width, root.height
 
         Image: 
-            source: "logoBEMM.png"
+            source: "static/logoBEMM.png"
             font_size: 32
             size_hint: (1,.5)
         
 
         GridLayout:
+            spacing: '20dp'
             cols: 1
             rows: 2
 
@@ -24,16 +28,15 @@ WindowManager:
                 id: "buttonLoginScreen"
                 text: "login"
                 font_size: 32
-                size_hint: (.8,.5)
                 on_release: 
                     app.root.current = "loginScreen" # change window to second
                     root.manager.transition.direction = "left"
                     root.afis()
+    
             Button:
                 id: "buttonRegisterScreen"
                 text: "register"
                 font_size: 32
-                size_hint: (.8,.5)
                 on_release: 
                     app.root.current = "registerScreen" # change window to second
                     root.manager.transition.direction = "left"
@@ -56,7 +59,7 @@ WindowManager:
 
         TextInput:
             id: "username"
-            font_size: 15
+            font_size: 10
             #size_hint: (1,.2)
         
         Label:
@@ -65,7 +68,7 @@ WindowManager:
 
         TextInput:
             id: "firstname"
-            font_size: 15
+            font_size: 10
             #size_hint: (1,.2)
         
         Label:
@@ -74,7 +77,7 @@ WindowManager:
 
         TextInput:
             id: "lastname"
-            font_size: 15
+            font_size: 10
             #size_hint: (1,.2)
 
         BoxLayout:
@@ -82,6 +85,9 @@ WindowManager:
             Button:
                 id: "buttonRegister"
                 text: "Register"
+                on_release:
+                    app.root.current = "mainScreen"
+                    root.manager.transition.direction = "up"
             Button:
                 id: "buttonBackRegister"
                 text: "Back"
@@ -101,16 +107,302 @@ WindowManager:
             text: "username"
 
         TextInput:
-            font_size: 15
+            font_size: 10
 
         BoxLayout:
             orientation: "horizontal"
             Button:
                 id: "buttonLogin"
                 text: "Login"
+                on_release:
+                    app.root.current = "mainScreen"
+                    root.manager.transition.direction = "up"
             Button:
                 id: "buttonBackLogin"
                 text: "Back"
                 on_release:      
                     app.root.current = "first" 
                     root.manager.transition.direction = "right"
+
+<MainWindow>:
+    name: "mainScreen"
+    BoxLayout:
+        orientation: "vertical"
+
+        BoxLayout:
+            orientation: "horizontal"
+            
+            Image:
+                source: "static/status1.png"
+            
+            Image:
+                source: "static/emoji1.png"
+
+        Button:
+            text: "Profile"
+        
+        BoxLayout: #layout water
+            orientation: "horizontal"
+
+            Image: 
+                source: "static/glass.png"
+
+            Label:
+                id: "mainLabelNr"
+                text: "NR"
+
+            Label:
+                text: "/"
+
+            Label:
+                id: "mainLabelTotal"
+                text: "NR"      
+
+            Button:
+                text: "+"
+
+        Button:
+            text: "Run"
+        
+        Button:
+            text: "Sport"
+            on_release:
+                app.root.current = "sportScreen" 
+                root.manager.transition.direction = "right"
+        
+        Button:
+            text: "Sleep"
+            on_release:
+                app.root.current = "sleepingScreen" 
+                root.manager.transition.direction = "right"
+
+
+<SleepingWindow>:
+    name: "sleepingScreen"
+    BoxLayout:
+        orientation: "vertical"
+        size: root.width, root.height
+
+        BoxLayout:
+            orientation: "horizontal"
+            Label:
+                text: "SLEEPING"
+                #size_hint: (1, .5)
+                font_size: 20
+            Button:
+                id: "buttonBackMain"
+                text: "Back"
+                on_release:
+                    app.root.current = "mainScreen"
+                    root.manager.transition.direction = "left"
+
+        BoxLayout:
+            orientation: "horizontal"
+            Label:
+                text: "Wake up hour:"
+                #size_hint: (1, .2)
+                font_size : 15
+            TextInput:
+                id: "hourToWakeUp"
+                #size_hint: (1, .2)
+                font_size: 15
+
+        BoxLayout:
+            orientation: "horizontal"
+            Button:
+                id: "whenToGoToSleep"
+                text: "When to go to sleep:"
+            Label:
+                text: "TO DO"
+                #size_hint: (1, .2)
+                font_size : 15
+
+        BoxLayout:
+            orientation: "horizontal"
+            Label:
+                text: "Hour to go to sleep:"
+                #size_hint: (1, .2)
+                font_size : 15
+            TextInput:
+                id: "hourToGoToSleep"
+                #size_hint: (1, .2)
+                font_size: 15
+
+        BoxLayout:
+            orientation: "horizontal"
+            Button:
+                id: "whenToWakeUp"
+                text: "When to wake up: "
+            Label:
+                text: "TO DO"
+                #size_hint: (1, .2)
+                font_size : 15
+
+        BoxLayout:
+            orientation: "horizontal"
+            Button:
+                id: "goodSleep"
+                text: "I slept enough! :)"
+            Button:
+                id: "badSleep"
+                text: "I didn't succeed this time.. :()"
+
+<SportWindow>:
+    name: "sportScreen"
+
+    GridLayout:
+        cols: 1
+        rows: 5
+        spacing: '20dp'
+
+        Label:
+            text: "WORKOUT"
+            #size_hint: (1,.5)
+            font_size: 20
+
+        BoxLayout:
+            orientation: "horizontal"
+
+            Label:
+                id: "actual_jumping_jacks"
+                text: "NR"
+                font_size: 15
+
+            Label:
+                text: "/"
+                font_size: 15
+
+            Label:
+                id:  "to_do_jumping_jacks"
+                text:  "NR"
+                font_size: 15
+
+            BoxLayout:
+                orientation: "vertical"
+
+                TextInput:
+                    id: "nr_jumping_jacks"
+                    font_size: 15
+                    #size_hint: (1,.2)
+
+                Button:
+                    id: "button_jumping_jacks"
+                    text: "+"
+                    size_hint: (1,.5)
+
+            Image:
+                source: "static/jumpingJacks.gif"
+                anim_delay: -1
+                anim_loop: 1
+
+        BoxLayout:
+            orientation: "horizontal"
+
+            Label:
+                id: "actual_squats"
+                text: "NR"
+                font_size: 15
+
+            Label:
+                text: "/"
+                font_size: 15
+
+            Label:
+                id: "to_do_squats"
+                text: "NR"
+                font_size: 15
+
+            BoxLayout:
+                orientation: "vertical"
+
+                TextInput:
+                    id: "nr_squats"
+                    font_size: 15
+                    #size_hint: (1,.2)
+
+                Button:
+                    id: "button_squats"
+                    text: "+"
+                    size_hint: (1,.5)
+
+            Image:
+                source: "static/squats.gif"
+                anim_delay: -1
+                anim_loop: 1
+
+        BoxLayout:
+            orientation: "horizontal"
+
+            Label:
+                id: "actual_crunches"
+                text: "NR"
+                font_size: 15
+
+            Label:
+                text: "/"
+                font_size: 15
+
+            Label:
+                id: "to_do_crunches"
+                text: "NR"
+                font_size: 15
+
+            BoxLayout:
+                orientation: "vertical"
+
+                TextInput:
+                    id: "nr_crunches"
+                    font_size: 15
+                    #size_hint: (1,.2)
+
+                Button:
+                    id: "button_crunches"
+                    text: "+"
+                    size_hint: (1,.5)
+
+            Image:
+                source: "static/crunches.gif"
+                anim_delay: -1
+                anim_loop: 1
+
+        BoxLayout:
+            orientation: "horizontal"
+
+            Label:
+                id: "actual_push_ups"
+                text: "NR"
+                font_size: 15
+
+            Label:
+                text: "/"
+                font_size: 15
+
+            Label:
+                id: "to_do_push_ups"
+                text: "NR"
+                font_size: 15
+
+            BoxLayout:
+                orientation: "vertical"
+
+                TextInput:
+                    id: "nr_push_ups"
+                    font_size: 15
+                    #size_hint: (1,.2)
+
+                Button:
+                    id: "button_push_ups"
+                    text: "+"
+                    size_hint: (1,.5)
+
+            Image:
+                source: "static/pushUps.gif"
+                anim_delay: -1
+                anim_loop: 1
+
+
+        
+
+
+
+    
