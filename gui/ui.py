@@ -7,8 +7,10 @@ from kivy.uix.textinput import TextInput
 from kivy.lang import Builder
 from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.core.window import Window
+from domain.User import User
 
 Window.size = (300,500)
+user = "caine"
 
 class FirstWindow(Screen):
     def afis(self):
@@ -17,11 +19,21 @@ class FirstWindow(Screen):
 class LoginWindow(Screen):
     pass
 
-class RegisterWindow(Screen):
+class ProfileWindow(Screen):
     pass
+
+class RegisterWindow(Screen):
+    def register(self):
+        # username = str(self.ids['username'].text)
+        # firstname = str(self.ids[firstname].text)
+        # lastname = str(self.ids.lastname.text)
+        # print(username)
+        print(self.ids)
+
 
 class MainWindow(Screen):
     pass
+
 
 class SleepingWindow(Screen):
     pass
