@@ -153,17 +153,19 @@ WindowManager:
 
             Label:
                 id: mainLabelNr
-                text: "NR"
+                text: "0"
 
             Label:
                 text: "/"
 
             Label:
                 id: mainLabelTotal
-                text: "NR"      
+                text: "Nr"
 
             Button:
                 text: "+"
+                on_release:
+                    root.addWater()
 
         Button:
             text: "Run"
@@ -449,7 +451,13 @@ WindowManager:
             orientation:"horizontal"
             Label:
                 text: "First Name"
-            Label:
+            TextInput:
                 id: firstNameField
                 text: "First Name"
-    
+        BoxLayout:
+            orientation:"horizontal"
+            Label:
+                text: "Last Name"
+            TextInput:
+                id: lastNameField
+                text: "Last Name"
