@@ -3,7 +3,7 @@ WindowManager:
     SleepingWindow:
 
 <SleepingWindow>:
-    name: "sleeping"
+    name: "sleepingScreen"
     BoxLayout:
         orientation: "vertical"
         size: root.width, root.height
@@ -48,7 +48,7 @@ WindowManager:
                     id: "buttonBackMain"
                     text: "Back"
                     on_release:
-                         app.root.current = "?"
+                         app.root.current = "mainScreen"
                          root.manager.transition.direction = "left"
                 Label:
                     text: "Hour to go to sleep:"
