@@ -28,10 +28,10 @@ def test_db():
 if __name__ == '__main__':
     #test_db()
     #print('Totul merge ca pe roate.')
-    # repo = UserRepository("localhost", "BEMM")
-    # val = UserValidator()
-    # service = UserService(repo, val)
-    # service.add_glasses(1)
-    ui = MyApp()
-    ui.run()
+    repo = UserRepository("localhost", "BEMM")
+    val = UserValidator()
+    service = UserService(repo, val)
+    service.make_graf_for_a_week("Matei21")
+    # ui = MyApp()
+    # ui.run()
     
