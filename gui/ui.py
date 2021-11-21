@@ -14,6 +14,9 @@ from domain.enums.ConditionEnum import Condition
 from repository.UserRepository import UserRepository
 from domain.validator.UserValidator import UserValidator
 from datetime import date
+import time
+import kivy
+from kivy.clock import Clock
 
 Window.size = (300,500)
 sportFinished = False
@@ -60,6 +63,7 @@ class RegisterWindow(Screen):
         print(username,firstname,lastname)
         user = User(username,firstname,lastname,"F",date.today(),50,210)
         service.save(username,firstname,lastname,"F",date.today(),50,210)
+        user = service.find_one_by_username(username)
 
 
 class MainWindow(Screen):
@@ -157,8 +161,31 @@ class SportWindow(Screen):
 
 
 class RunWindow(Screen):
-    pass
-
+    num = 0
+    begin = 0
+    end = 0
+    def time_convert(self,sec):
+        mins = sec // 60
+        sec = sec % 60
+        hours = mins // 60
+        mins = mins % 60
+        return "Time Lapsed = {0}:{1}:{2}".format(int(hours),int(mins),sec)
+    def increment(self,interval):
+        self.num+=1
+        self.ids.runLabel.text = self.time_convert(self.num)
+    def change(self):
+        if self.ids.buttonRun.text == "Start":
+            self.ids.buttonRun.text = "Stop"
+            Clock.unschedule(self.increment)
+            self.num = 0
+            Clock.schedule_interval(self.increment,1)
+        else:
+            self.ids.buttonRun.text = "Start"
+            minutesSoFar = int(self.ids.runMinutesLabel.text)
+            minutesSoFar+=self.num//60
+            service.add_running_time(user.get_user_id(),self.num//60)
+            self.ids.runMinutesLabel.text = str(minutesSoFar)
+            Clock.unschedule(self.increment)
 class WindowManager(ScreenManager):     
     pass
 

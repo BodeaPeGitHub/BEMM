@@ -6,7 +6,8 @@ WindowManager:
     MainWindow:
     SportWindow:
     SleepingWindow:
-    ProfileWindow
+    ProfileWindow:
+    RunWindow:
 
 <Button>:
     #size: 100, 100
@@ -215,7 +216,9 @@ WindowManager:
 
         Button:
             text: "Run"
-
+            on_release:
+                app.root.current = "runScreen" 
+                root.manager.transition.direction = "right"
         Label:
             size_hint: 0.001, 0.1
             font_size: 1
@@ -596,4 +599,48 @@ WindowManager:
         TextInput:
             id: conditionField
             text: "Condition"
+
+<RunWindow>:
+    name: "runScreen"
+    BoxLayout:
+        orientation: "vertical"
+
+        BoxLayout:
+            orientation: "horizontal"
+            Label:
+                text: "Running"
+                color: '#000000'
+            Button:
+                text: "Back"
+                on_release:
+                    app.root.current = "mainScreen"
+                    root.manager.transition.direction = "left"
+        
+        BoxLayout:
+            orientation: "horizontal"
+
+            Label:
+                id: runMinutesLabel
+                text: "0"
+                color: '#000000'
+            Label:
+                text: "/"
+                color: '#000000'
+            
+            Label:
+                id: runTotalLabel
+                text: "0"
+                color: '#000000'
+
+        Button:
+            id: buttonRun
+            text: "Start"
+            on_release:
+                root.change()
+        Label:
+            id: runLabel
+            color: '#000000'
+            text: "00:00:00"
+
+
 
