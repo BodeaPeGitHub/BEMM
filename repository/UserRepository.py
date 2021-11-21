@@ -59,6 +59,10 @@ class UserRepository:
         weight = item.__getitem__(7)
         minutes_ran = item.__getitem__(8)
         sleeping_time = item.__getitem__(9)
+        if sleeping_time == 1:
+            sleeping_time = True
+        else:
+            sleeping_time = False
         glasses_drank = item.__getitem__(10)
         jumping_jacks = item.__getitem__(11)
         squats = item.__getitem__(12)
@@ -88,7 +92,7 @@ class UserRepository:
     def find_one_by_username(self, username):
         conn = pyodbc.connect(self.__con_srt)
         cursor = conn.cursor()
-        user = cursor.execute(f"select * from Users where username='{username}'").fetchall()
+        user = cursor.execute(f"select * from Users where username='{username}' order by id desc").fetchall()
         return self.__extract_user(user[0])
 
     def user_statistics(self, username):
