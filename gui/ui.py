@@ -51,8 +51,14 @@ class ProfileWindow(Screen):
         self.ids.genderField.text = str(gender)
         self.ids.heightField.text = str(height)
         self.ids.weightField.text = str(weight)
-        self.ids.conditionField.text = str(condition)
+        self.ids.conditionField.text = str(condition).split('.')[-1]
         
+
+class HistogramWindow(Screen):
+    def on_enter(self):
+        global user
+        service.make_graf_for_a_week(user.get_username())
+        self.ids.histogramImg.reload()
 
 class RegisterWindow(Screen):
     def register(self):
