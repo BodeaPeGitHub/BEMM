@@ -100,14 +100,15 @@ WindowManager:
     name: "loginScreen"
     BoxLayout:
         orientation: "vertical"
-        
         Label:
             text: "login screen"
-        
+            background_color: '#100000'
+            background_normal: ""
         Label:
             text: "username"
 
         TextInput:
+            id: LoginUsername
             font_size: 10
 
         BoxLayout:
@@ -118,6 +119,7 @@ WindowManager:
                 on_release:
                     app.root.current = "mainScreen"
                     root.manager.transition.direction = "up"
+                    root.logIn()
             Button:
                 id: buttonBackLogin
                 text: "Back"
@@ -129,7 +131,6 @@ WindowManager:
     name: "mainScreen"
     BoxLayout:
         orientation: "vertical"
-
         BoxLayout:
             orientation: "horizontal"
             
