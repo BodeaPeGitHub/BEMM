@@ -10,7 +10,7 @@ class WaterHabit:
         self.__calculate_number_of_glasses()
 
     def __calculate_number_of_glasses(self):
-        self.__number_of_glasses = math.ceil((self.__weight * 2.2 * 67) // 8)
+        self.__number_of_glasses = math.ceil((self.__weight * 2.2 * 0.67) // 8)
 
     def get_status(self):
         return self.__status

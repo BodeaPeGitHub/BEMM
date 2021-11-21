@@ -275,20 +275,23 @@ WindowManager:
                         size_hint: (.2, None)
                         height: 35
                         multiline: False
-                        id: "hourToWakeUp"
+                        id: hourToWakeUp
                         font_size: 12
                     TextInput:
                         size_hint: (.2, None)
                         height: 35
                         multiline: False
-                        id: "minuteToWakeUp"
+                        id: minuteToWakeUp
                         font_size: 12
                 Button:
                     font_size: 15
                     size_hint: 1, 0.5
                     id: whenToGoToSleep
                     text: "When to go to sleep:"
+                    on_release:
+                        root.when_go_to_sleep()
                 Label:
+                    id: goToSleep
                     color: 0,1,1,1
                     size_hint: 1, 0.4
                     text: "TO DO"
@@ -325,7 +328,7 @@ WindowManager:
                         size_hint: (.2, None)
                         height: 35
                         multiline: False
-                        id: "hourToGoToSleep"
+                        id: hourToGoToSleep
                         font_size: 12
                     TextInput:
                         size_hint: (.2, None)
@@ -338,7 +341,10 @@ WindowManager:
                     size_hint: 1, 0.5
                     id: whenToWakeUp
                     text: "When to wake up: "
+                    on_release:
+                        root.when_wake_up()
                 Label:
+                    id: wakeUp
                     color: 0,1,1,1
                     size_hint: 1, 0.4
                     text: "TO DO"
