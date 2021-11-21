@@ -90,6 +90,26 @@ class UserService:
         user = self.__user_repository.find_one(user_id)
         return user.get_running_habit().running_time() <= user.get_running_habit().get_minutes_ran()
 
+    def add_jumping_jacks(self, user_id, nr_of_jumping_jacks):
+        user = self.__user_repository.find_one(user_id)
+        self.__user_repository.update_attribute("jumping_jacks", user.get_sporting_habit().get_actual_workout()[0] + nr_of_jumping_jacks, user_id)
+
+    def add_squats(self, user_id, nr_of_squats):
+        user = self.__user_repository.find_one(user_id)
+        self.__user_repository.update_attribute("squats", user.get_sporting_habit().get_actual_workout()[1] + nr_of_squats, user_id)
+
+    def add_crunches(self, user_id, nr_of_crunches):
+        user = self.__user_repository.find_one(user_id)
+        self.__user_repository.update_attribute("crunches", user.get_sporting_habit().get_actual_workout()[2] + nr_of_crunches, user_id)
+
+    def add_push_ups(self, user_id, nr_of_push_ups):
+        user = self.__user_repository.find_one(user_id)
+        self.__user_repository.update_attribute("push_ups", user.get_sporting_habit().get_actual_workout()[3] + nr_of_push_ups, user_id)
+
+    def achieved_sport_habit(self, user_id):
+        user = self.__user_repository.find_one(user_id)
+        return user.get_sporting_habit().get_actual_workout() >= user.get_sporting_habit().get_workout()
+
     def return_sleeping_habit(self, user_id):
         user = self.__user_repository.find_one(user_id)
         return user.get_sleeping_habit().get_number_of_hours()
