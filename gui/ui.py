@@ -81,9 +81,13 @@ class MainWindow(Screen):
     def on_enter(self):
         completedGoals = 1
         global user
+        if service.achieved_running_habit(user.get_user_id()):
+            completedGoals+=1
         if service.achieved_sport_habit(user.get_user_id()):
             completedGoals+=1
         if service.achieved_water_habit(user.get_user_id()):
+            completedGoals+=1
+        if service.achieved_sleeping_habit(user.get_user_id()):
             completedGoals+=1
         user = service.find_one_by_username(user.get_username())
         self.ids.mainLabelNr.text = str(user.get_water_habit().get_number_of_glasses_drunk())
@@ -99,8 +103,6 @@ class MainWindow(Screen):
         print("id: ", user.get_user_id(), "glasses: ", glasses)
         service.add_glasses(user.get_user_id())
         self.ids.mainLabelNr.text = str(glasses)
-        if service.achieved_sport_habit(user.get_user_id()):
-            completedGoals+=1
         if service.achieved_water_habit(user.get_user_id()):
             completedGoals+=1
         self.ids.emojiId.source = "gui/static/emoji"+str(completedGoals)+".png"
@@ -208,6 +210,9 @@ class RunWindow(Screen):
     num = 0
     begin = 0
     end = 0
+    def on_enter(self):
+        global user
+        self.ids.runTotalLabel.text = str(service.return_running_time(user.get_user_id()))
     def time_convert(self,sec):
         mins = sec // 60
         sec = sec % 60
