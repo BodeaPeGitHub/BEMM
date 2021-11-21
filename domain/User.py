@@ -116,7 +116,7 @@ class User:
         score = 0
         if self.__running_habit.get_minutes_ran() >= self.__running_habit.running_time():
             score += 1
-        if self.__sleeping_habit.get_hours_slept:
+        if self.__sleeping_habit.get_hours_slept():
             score += 1
         if self.__sporting_habit.get_actual_workout() >= self.__sporting_habit.get_workout():
             score += 1
