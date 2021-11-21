@@ -86,7 +86,23 @@ class MainWindow(Screen):
 
 
 class SleepingWindow(Screen):
-    pass
+    def on_enter(self):
+        self.ids.goToSleep.text = str("")
+        self.ids.wakeUp.text = str("")
+
+    def when_wake_up(self):
+        global user
+        hour = int(self.ids.hourToGoToSleep.text)
+        minute = int(self.ids.minuteToGoToSleep.text)
+        wake_up = service.calculate_when_to_wake_up(user.get_user_id(), (hour, minute))
+        self.ids.wakeUp.text = str(str(wake_up[0]) + ":" + str(wake_up[1]))
+
+    def when_go_to_sleep(self):
+        global user
+        hour = int(self.ids.hourToWakeUp.text)
+        minute = int(self.ids.minuteToWakeUp.text)
+        go_to_sleep = service.calculate_when_to_go_to_sleep(user.get_user_id(), (hour, minute))
+        self.ids.goToSleep.text = str(str(go_to_sleep[0]) + ":" + str(go_to_sleep[1]))
 
 class SportWindow(Screen):
     def on_enter(self):
