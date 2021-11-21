@@ -112,6 +112,18 @@ class User:
         self.__height = height
         self.__calculate_condition()
 
+    def get_status(self):
+        score = 0
+        if self.__running_habit.get_minutes_ran() >= self.__running_habit.running_time():
+            score += 1
+        if self.__sleeping_habit.get_hours_slept:
+            score += 1
+        if self.__sporting_habit.get_actual_workout() >= self.__sporting_habit.get_workout():
+            score += 1
+        if self.__water_habit.get_number_of_glasses_drunk() >= self.__water_habit.get_number_of_glasses():
+            score += 1
+        return score
+
     def __str__(self):
         jumping_jacks, squats, crunches, push_ups = self.__sporting_habit.get_actual_workout()
         return f"{self.__user_id} | {self.__username} | {self.__first_name} | {self.__last_name} | {self.__gender} | {self.__height} | {self.__birthday} | {self.__weight} | {self.__running_habit.get_minutes_ran()} |  {self.__sleeping_habit.get_hours_slept()} | {self.__water_habit.get_number_of_glasses_drunk()} | {jumping_jacks} | {squats} | {crunches} | {push_ups}"

@@ -1,4 +1,5 @@
 from domain.User import User
+import matplotlib.pyplot as plt
 
 
 class UserService:
@@ -68,7 +69,8 @@ class UserService:
 
     def add_glasses(self, user_id):
         user = self.__user_repository.find_one(user_id)
-        self.__user_repository.update_attribute("glasses_drank", user.get_water_habit().get_number_of_glasses_drunk() + 1, user_id)
+        self.__user_repository.update_attribute("glasses_drank",
+                                                user.get_water_habit().get_number_of_glasses_drunk() + 1, user_id)
 
     def return_number_of_glasses(self, user_id):
         user = self.__user_repository.find_one(user_id)
@@ -80,7 +82,8 @@ class UserService:
 
     def add_running_time(self, user_id, running_time):
         user = self.__user_repository.find_one(user_id)
-        self.__user_repository.update_attribute("minutes_run", user.get_running_habit().get_minutes_ran() + running_time, user_id)
+        self.__user_repository.update_attribute("minutes_run",
+                                                user.get_running_habit().get_minutes_ran() + running_time, user_id)
 
     def return_running_time(self, user_id):
         user = self.__user_repository.find_one(user_id)
@@ -92,19 +95,27 @@ class UserService:
 
     def add_jumping_jacks(self, user_id, nr_of_jumping_jacks):
         user = self.__user_repository.find_one(user_id)
-        self.__user_repository.update_attribute("jumping_jacks", user.get_sporting_habit().get_actual_workout()[0] + nr_of_jumping_jacks, user_id)
+        self.__user_repository.update_attribute("jumping_jacks",
+                                                user.get_sporting_habit().get_actual_workout()[0] + nr_of_jumping_jacks,
+                                                user_id)
 
     def add_squats(self, user_id, nr_of_squats):
         user = self.__user_repository.find_one(user_id)
-        self.__user_repository.update_attribute("squats", user.get_sporting_habit().get_actual_workout()[1] + nr_of_squats, user_id)
+        self.__user_repository.update_attribute("squats",
+                                                user.get_sporting_habit().get_actual_workout()[1] + nr_of_squats,
+                                                user_id)
 
     def add_crunches(self, user_id, nr_of_crunches):
         user = self.__user_repository.find_one(user_id)
-        self.__user_repository.update_attribute("crunches", user.get_sporting_habit().get_actual_workout()[2] + nr_of_crunches, user_id)
+        self.__user_repository.update_attribute("crunches",
+                                                user.get_sporting_habit().get_actual_workout()[2] + nr_of_crunches,
+                                                user_id)
 
     def add_push_ups(self, user_id, nr_of_push_ups):
         user = self.__user_repository.find_one(user_id)
-        self.__user_repository.update_attribute("push_ups", user.get_sporting_habit().get_actual_workout()[3] + nr_of_push_ups, user_id)
+        self.__user_repository.update_attribute("push_ups",
+                                                user.get_sporting_habit().get_actual_workout()[3] + nr_of_push_ups,
+                                                user_id)
 
     def achieved_sport_habit(self, user_id):
         user = self.__user_repository.find_one(user_id)
@@ -116,13 +127,25 @@ class UserService:
 
     def calculate_when_to_wake_up(self, user_id, time):
         user = self.__user_repository.find_one(user_id)
-        hour = time[0]*60 + time[1] + user.get_sleeping_habit().get_number_of_hours()[0] * 60 + user.get_sleeping_habit().get_number_of_hours()[1] - 24 * 60
+        hour = time[0] * 60 + time[1] + user.get_sleeping_habit().get_number_of_hours()[0] * 60 + \
+               user.get_sleeping_habit().get_number_of_hours()[1] - 24 * 60
         return hour // 60, hour % 60
 
     def calculate_when_to_go_to_sleep(self, user_id, time):
         user = self.__user_repository.find_one(user_id)
-        hour = 24*60 + time[0] * 60 + time[1] - user.get_sleeping_habit().get_number_of_hours()[0] * 60 - user.get_sleeping_habit().get_number_of_hours()[1]
+        hour = 24 * 60 + time[0] * 60 + time[1] - user.get_sleeping_habit().get_number_of_hours()[0] * 60 - \
+               user.get_sleeping_habit().get_number_of_hours()[1]
         return hour // 60, hour % 60
 
-
-
+    def make_graf_for_a_week(self, username):
+        stats = self.__user_repository.user_statistics(username)
+        if len(stats) < 7:
+            stats = (7 - len(stats)) * [0] + stats
+        plt.figure(figsize=(10, 6))
+        week = ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su']
+        plt.bar(week, stats, width=0.7, color='#0080ff', alpha=0.7)
+        plt.xlabel("Day", fontsize=18)
+        plt.ylabel("Status", fontsize=18)
+        #plt.grid(axis='y', linestyle='--')
+        plt.title('Weekly Status Histogram', fontsize=15)
+        plt.show()

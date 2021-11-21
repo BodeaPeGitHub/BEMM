@@ -90,3 +90,14 @@ class UserRepository:
         cursor = conn.cursor()
         user = cursor.execute(f"select * from Users where username='{username}'").fetchall()
         return self.__extract_user(user[0])
+
+    def user_statistics(self, username):
+        conn = pyodbc.connect(self.__con_srt)
+        cursor = conn.cursor()
+        users = cursor.execute(f"select * from Users where username='{username}'").fetchall()
+        all_users = []
+        print(len(users))
+        for index in range(min(len(users), 7)):
+            print(users[index])
+            all_users.append(self.__extract_user(users[index]).get_status())
+        return all_users
