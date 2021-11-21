@@ -361,6 +361,8 @@ WindowManager:
                     size_hint: 1, 0.5
                     id: goodSleep
                     text: "I slept enough! :)"
+                    on_release:
+                        root.enough_sleep()
 
             Label:
                 size_hint: 0.01, 1
@@ -414,6 +416,8 @@ WindowManager:
                     size_hint: 1, 0.5
                     id: badSleep
                     text: "I didn't succeed\n this time.. :("
+                    on_release:
+                        root.not_enough_sleep()
 
 <SportWindow>:
     name: "sportScreen"

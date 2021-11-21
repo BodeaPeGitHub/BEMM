@@ -144,6 +144,14 @@ class SleepingWindow(Screen):
         sleep_string += str(final_minute)
         self.ids.goToSleep.text = sleep_string
 
+    def enough_sleep(self):
+        global user
+        service.set_sleep_enough(user.get_user_id())
+
+    def not_enough_sleep(self):
+        global user
+        service.set_sleep_not_enough(user.get_user_id())
+
 class SportWindow(Screen):
     def on_enter(self):
         global user
