@@ -153,3 +153,9 @@ class UserService:
         plt.yticks([0, 25, 50, 75, 100])
         plt.title('Weekly Status Histogram', fontsize=15)
         plt.savefig("gui/static/histogram")
+
+    def set_sleep_enough(self, user_id):
+        self.__user_repository.update_attribute("sleeping_time", 1, user_id)
+
+    def set_sleep_not_enaugh(self, user_id):
+        self.__user_repository.update_attribute("sleeping_time", 0, user_id)
