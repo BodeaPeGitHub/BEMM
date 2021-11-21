@@ -127,14 +127,16 @@ class UserService:
 
     def calculate_when_to_wake_up(self, user_id, time):
         user = self.__user_repository.find_one(user_id)
-        hour = time[0] * 60 + time[1] + user.get_sleeping_habit().get_number_of_hours()[0] * 60 + \
-               user.get_sleeping_habit().get_number_of_hours()[1] - 24 * 60
+        hour = time[0]*60 + time[1] + user.get_sleeping_habit().get_number_of_hours()[0] * 60 + user.get_sleeping_habit().get_number_of_hours()[1]
+        if hour >= 24 * 60:
+            hour -= 24*60
         return hour // 60, hour % 60
 
     def calculate_when_to_go_to_sleep(self, user_id, time):
         user = self.__user_repository.find_one(user_id)
-        hour = 24 * 60 + time[0] * 60 + time[1] - user.get_sleeping_habit().get_number_of_hours()[0] * 60 - \
-               user.get_sleeping_habit().get_number_of_hours()[1]
+        hour = 24*60 + time[0] * 60 + time[1] - user.get_sleeping_habit().get_number_of_hours()[0] * 60 - user.get_sleeping_habit().get_number_of_hours()[1]
+        if hour >= 24 * 60:
+            hour -= 24*60
         return hour // 60, hour % 60
 
     def make_graf_for_a_week(self, username):

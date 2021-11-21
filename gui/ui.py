@@ -99,14 +99,32 @@ class SleepingWindow(Screen):
         hour = int(self.ids.hourToGoToSleep.text)
         minute = int(self.ids.minuteToGoToSleep.text)
         wake_up = service.calculate_when_to_wake_up(user.get_user_id(), (hour, minute))
-        self.ids.wakeUp.text = str(str(wake_up[0]) + ":" + str(wake_up[1]))
+        wake_up_string = ""
+        final_hour = wake_up[0]
+        if final_hour < 10:
+            wake_up_string += "0"
+        wake_up_string += str(final_hour) + ":"
+        final_minute = wake_up[1]
+        if final_minute < 10:
+            wake_up_string += "0"
+        wake_up_string += str(final_minute)
+        self.ids.wakeUp.text = wake_up_string
 
     def when_go_to_sleep(self):
         global user
         hour = int(self.ids.hourToWakeUp.text)
         minute = int(self.ids.minuteToWakeUp.text)
         go_to_sleep = service.calculate_when_to_go_to_sleep(user.get_user_id(), (hour, minute))
-        self.ids.goToSleep.text = str(str(go_to_sleep[0]) + ":" + str(go_to_sleep[1]))
+        sleep_string = ""
+        final_hour = go_to_sleep[0]
+        if final_hour < 10:
+            sleep_string += "0"
+        sleep_string += str(go_to_sleep[0]) + ":"
+        final_minute = go_to_sleep[1]
+        if final_minute < 10:
+            sleep_string += "0"
+        sleep_string += str(final_minute)
+        self.ids.goToSleep.text = sleep_string
 
 class SportWindow(Screen):
     def on_enter(self):
