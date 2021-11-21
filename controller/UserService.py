@@ -152,4 +152,4 @@ class UserService:
         plt.ylabel("Status", fontsize=18)
         plt.yticks([0, 25, 50, 75, 100])
         plt.title('Weekly Status Histogram', fontsize=15)
-        plt.show()
+        plt.savefig("gui/static/histogram")
