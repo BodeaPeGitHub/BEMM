@@ -58,6 +58,7 @@ class HistogramWindow(Screen):
     def on_enter(self):
         global user
         service.make_graf_for_a_week(user.get_username())
+        self.ids.histogramImg.reload()
 
 class RegisterWindow(Screen):
     def register(self):
