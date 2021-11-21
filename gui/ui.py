@@ -105,6 +105,12 @@ class MainWindow(Screen):
         self.ids.mainLabelNr.text = str(glasses)
         if service.achieved_water_habit(user.get_user_id()):
             completedGoals+=1
+        if service.achieved_running_habit(user.get_user_id()):
+            completedGoals+=1
+        if service.achieved_sport_habit(user.get_user_id()):
+            completedGoals+=1
+        if service.achieved_sleeping_habit(user.get_user_id()):
+            completedGoals+=1
         self.ids.emojiId.source = "gui/static/emoji"+str(completedGoals)+".png"
         self.ids.statusId.source = "gui/static/status"+str(completedGoals)+".png"
 
@@ -213,6 +219,7 @@ class RunWindow(Screen):
     def on_enter(self):
         global user
         self.ids.runTotalLabel.text = str(service.return_running_time(user.get_user_id()))
+        self.ids.runMinutesLabel.text = str(user.get_running_habit().get_minutes_ran())
     def time_convert(self,sec):
         mins = sec // 60
         sec = sec % 60
