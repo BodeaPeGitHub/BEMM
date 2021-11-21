@@ -656,6 +656,7 @@ WindowManager:
         TextInput:
             id: conditionField
             text: "Condition"
+            font_size: 17
 
 <RunWindow>:
     name: "runScreen"
@@ -665,8 +666,11 @@ WindowManager:
         BoxLayout:
             orientation: "horizontal"
             Label:
-                text: "Running"
-                color: '#000000'
+                color: 0,1,1,1
+                text: "SLEEPING"
+                size_hint: 1, 0.5
+                font_size : 20
+
             Button:
                 text: "Back"
                 on_release:
