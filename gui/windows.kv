@@ -135,9 +135,11 @@ WindowManager:
             orientation: "horizontal"
             
             Image:
+                id: statusId
                 source: "gui/static/status1.png"
             
             Image:
+                id: emojiId
                 source: "gui/static/emoji1.png"
 
         Button:
@@ -336,6 +338,8 @@ WindowManager:
                     id: button_jumping_jacks
                     text: "+"
                     size_hint: (1,.5)
+                    on_release:
+                        root.addJumps()
 
             Image:
                 source: "gui/static/sport1.jpg"
@@ -369,6 +373,8 @@ WindowManager:
                     id: button_squats
                     text: "+"
                     size_hint: (1,.5)
+                    on_release:
+                        root.addSquats()
 
             Image:
                 source: "gui/static/sport2.jfif"
@@ -402,6 +408,8 @@ WindowManager:
                     id: button_crunches
                     text: "+"
                     size_hint: (1,.5)
+                    on_release:
+                        root.addCrunches()
 
             Image:
                 source: "gui/static/sport3.jpg"
@@ -435,6 +443,8 @@ WindowManager:
                     id: button_push_ups
                     text: "+"
                     size_hint: (1,.5)
+                    on_release:
+                        root.addPushUps()
 
             Image:
                 source: "gui/static/sport4.jfif"

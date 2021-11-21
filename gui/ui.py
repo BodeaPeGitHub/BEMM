@@ -16,6 +16,7 @@ from domain.validator.UserValidator import UserValidator
 from datetime import date
 
 Window.size = (300,500)
+sportFinished = False
 user = "caine"
 validator = UserValidator()
 repository = UserRepository("localhost", "BEMM")
@@ -62,12 +63,18 @@ class RegisterWindow(Screen):
 
 
 class MainWindow(Screen):
-    global user
     def on_enter(self):
+        completedGoals = 1
         global user
+        if service.achieved_sport_habit(user.get_user_id()):
+            completedGoals+=1
+        if service.achieved_water_habit(user.get_user_id()):
+            completedGoals+=1
         user = service.find_one_by_username(user.get_username())
         self.ids.mainLabelNr.text = str(user.get_water_habit().get_number_of_glasses_drunk())
         self.ids.mainLabelTotal.text = str(user.get_water_habit().get_number_of_glasses())
+        self.ids.emojiId.source = "gui/static/emoji"+str(completedGoals)+".png"
+        self.ids.statusId.source = "gui/static/status"+str(completedGoals)+".png"
     def addWater(self):
         global user
         user = service.find_one_by_username(user.get_username())
@@ -103,6 +110,34 @@ class SportWindow(Screen):
         self.ids.to_do_squats.text = str(squats)
         self.ids.to_do_crunches.text = str(crunches)
         self.ids.to_do_push_ups.text = str(pushUps)
+
+    def addJumps(self):
+        global user
+        jumps = int(self.ids.actual_jumping_jacks.text)
+        additionalJumps = int(self.ids.nr_jumping_jacks.text)
+        self.ids.actual_jumping_jacks.text = str(jumps+additionalJumps)
+        service.add_jumping_jacks(user.get_user_id(),additionalJumps)
+    
+    def addSquats(self):
+        global user
+        squats = int(self.ids.actual_squats.text)
+        additionalSquats = int(self.ids.nr_squats.text)
+        self.ids.actual_squats.text = str(squats+additionalSquats)
+        service.add_squats(user.get_user_id(),additionalSquats)
+
+    def addCrunches(self):
+        global user
+        crunches = int(self.ids.actual_crunches.text)
+        additionalCrunches = int(self.ids.nr_crunches.text)
+        self.ids.actual_crunches.text = str(crunches + additionalCrunches)
+        service.add_crunches(user.get_user_id(), additionalCrunches)
+
+    def addPushUps(self):
+        global user
+        pushUps = int(self.ids.actual_push_ups.text)
+        additionalPushUps = int(self.ids.nr_push_ups.text)
+        self.ids.actual_push_ups.text = str(pushUps + additionalPushUps)
+        service.add_push_ups(user.get_user_id(), additionalPushUps)
 
 
 class RunWindow(Screen):
