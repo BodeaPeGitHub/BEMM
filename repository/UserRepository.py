@@ -96,6 +96,8 @@ class UserRepository:
         cursor = conn.cursor()
         users = cursor.execute(f"select * from Users where username='{username}'").fetchall()
         all_users = []
+        print(len(users))
         for index in range(min(len(users), 7)):
+            print(users[index])
             all_users.append(self.__extract_user(users[index]).get_status())
-        return self.__extract_user(users)
+        return all_users

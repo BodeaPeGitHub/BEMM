@@ -114,13 +114,13 @@ class User:
 
     def get_status(self):
         score = 0
-        if self.__running_habit.get_minutes_ran >= self.__running_habit.running_time():
+        if self.__running_habit.get_minutes_ran() >= self.__running_habit.running_time():
             score += 1
         if self.__sleeping_habit.get_hours_slept:
             score += 1
-        if self.__sporting_habit.get_actual_workout() == self.__sporting_habit.get_workout():
+        if self.__sporting_habit.get_actual_workout() >= self.__sporting_habit.get_workout():
             score += 1
-        if self.__water_habit.get_number_of_glasses_drunk == self.__water_habit.get_number_of_glasses():
+        if self.__water_habit.get_number_of_glasses_drunk() >= self.__water_habit.get_number_of_glasses():
             score += 1
         return score
 
