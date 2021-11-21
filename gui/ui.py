@@ -54,6 +54,11 @@ class ProfileWindow(Screen):
         self.ids.conditionField.text = str(condition)
         
 
+class HistogramWindow(Screen):
+    def on_enter(self):
+        global user
+        service.make_graf_for_a_week(user.get_username())
+
 class RegisterWindow(Screen):
     def register(self):
         global user

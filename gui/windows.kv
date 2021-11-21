@@ -8,6 +8,7 @@ WindowManager:
     SleepingWindow:
     ProfileWindow:
     RunWindow:
+    HistogramWindow:
 
 <Button>:
     #size: 100, 100
@@ -80,8 +81,8 @@ WindowManager:
         Label:
             color: 0,1,1,1
             text: "Sign Up"
-            font_size: 25
-            height : 20
+            font_size: 20
+            height : 16
 
         Label:
             color: 0,1,1,1
@@ -90,6 +91,8 @@ WindowManager:
 
         TextInput:
             id: username
+            font_size: 15
+            size_hint: 1, .85
         
         Label:
             color: 0,1,1,1
@@ -98,46 +101,58 @@ WindowManager:
 
         TextInput:
             id: firstname
+            font_size: 15
+            size_hint: 1, .85
         
         Label:
             color: 0,1,1,1
-            text: "Last Name"
+            text: "Last Name: "
             font_size: 15
 
         TextInput:
             id: lastname
+            font_size: 15
+            size_hint: 1, .85
 
         Label:
             color: 0,1,1,1
-            text: "Gender"
+            text: "Gender: "
             font_size: 15
 
         TextInput:
             id: gender
+            font_size: 15
+            size_hint: 1, .85
         
         Label:
             color: 0,1,1,1
-            text: "Height"
+            text: "Height: "
             font_size: 15
 
         TextInput:
             id: height
+            font_size: 15
+            size_hint: 1, .85
         
         Label:
             color: 0,1,1,1
-            text: "Weight"
+            text: "Weight: "
             font_size: 15
 
         TextInput:
             id: weight
+            font_size: 15
+            size_hint: 1, .85
         
         Label:
             color: 0,1,1,1
-            text: "Birthday"
+            text: "Birthday: "
             font_size: 15
 
         TextInput:
             id: birthday
+            font_size: 15
+            size_hint: 1, .85
 
         BoxLayout:
             orientation: "horizontal"
@@ -273,6 +288,16 @@ WindowManager:
 
         Label:
             size_hint: 0.01, 0.1
+            font_size: 1
+
+        Button:
+            text: "Histogram"
+            on_release:
+                app.root.current = "histogramScreen"
+                root.manager.transition.direction = "right"
+
+        Label:
+            size_hint: 0.001, 0.1
             font_size: 1
 
         Button:
@@ -673,6 +698,22 @@ WindowManager:
             id: runLabel
             color: '#000000'
             text: "00:00:00"
+
+<HistogramWindow>:
+    name: "histogramScreen"
+
+    BoxLayout:
+        orientation: "vertical"
+
+        Image:
+            source: "gui/static/histogram.png"
+
+        Button:
+            text: "Back"
+            size_hint: 1, .2
+            on_release:
+                app.root.current = "mainScreen"
+                root.manager.transition.direction = "left"
 
 
 
