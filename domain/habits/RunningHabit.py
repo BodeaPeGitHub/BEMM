@@ -13,7 +13,7 @@ class RunningHabit:
 
     def __calculate_how_much_you_need_to_run(self):
         self.__running_time = 25
-        if self.__gender == Gender.female:
+        if self.__gender == Gender.f.name:
             self.__running_time = 20
         if self.__condition in [Condition.mild_thinness, Condition.overweight]:
             self.__running_time -= 2

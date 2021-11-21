@@ -21,7 +21,7 @@ class SportingHabit:
         self.__status = status
 
     def __calculate_workout(self):
-        if self.__gender == Gender.female:
+        if self.__gender == Gender.f.name:
             if self.__condition == Condition.normal:
                 self.__squats = 30
                 self.__push_ups = 20
