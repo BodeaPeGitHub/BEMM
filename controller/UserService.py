@@ -125,6 +125,10 @@ class UserService:
         user = self.__user_repository.find_one(user_id)
         return user.get_sleeping_habit().get_number_of_hours()
 
+    def achieved_sleeping_habit(self, user_id):
+        user = self.__user_repository.find_one(user_id)
+        return user.get_sleeping_habit().get_hours_slept() == 1
+
     def calculate_when_to_wake_up(self, user_id, time):
         user = self.__user_repository.find_one(user_id)
         hour = time[0]*60 + time[1] + user.get_sleeping_habit().get_number_of_hours()[0] * 60 + user.get_sleeping_habit().get_number_of_hours()[1]
