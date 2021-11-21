@@ -8,7 +8,7 @@ class SleepingHabit:
     def __init__(self, birth_date):
         self.__status = Status.not_started
         self.__birth_date = birth_date
-        self.__number_of_hours_slept = 0
+        self.__number_of_hours_slept = False
         self.__number_of_hours = self.__compute_sleeping_time()
 
     def get_number_of_hours(self):
