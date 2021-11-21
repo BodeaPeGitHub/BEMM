@@ -51,7 +51,7 @@ class ProfileWindow(Screen):
         self.ids.genderField.text = str(gender)
         self.ids.heightField.text = str(height)
         self.ids.weightField.text = str(weight)
-        self.ids.conditionField.text = str(condition).split('.')[-1]
+        self.ids.conditionField.text = str(condition).split('.')[-1].replace('_',' ')
         
 
 class HistogramWindow(Screen):
