@@ -230,7 +230,7 @@ class RunWindow(Screen):
             service.add_running_time(user.get_user_id(),self.num//60)
             self.ids.runMinutesLabel.text = str(minutesSoFar)
             Clock.unschedule(self.increment)
-class WindowManager(ScreenManager):     
+class WindowManager(ScreenManager):
     pass
 
 
