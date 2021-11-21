@@ -52,7 +52,7 @@ WindowManager:
         GridLayout:
             spacing: '20dp'
             cols: 1
-            rows: 2
+            rows: 3
 
             Button:
                 id: buttonLoginScreen
@@ -70,6 +70,11 @@ WindowManager:
                 on_release: 
                     app.root.current = "registerScreen" # change window to second
                     root.manager.transition.direction = "left"
+
+            Label:
+                size_hint: 0.001, .1
+                font_size: 1
+
 
 
 <RegisterWindow>:
