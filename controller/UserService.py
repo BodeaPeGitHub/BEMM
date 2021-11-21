@@ -141,11 +141,13 @@ class UserService:
         stats = self.__user_repository.user_statistics(username)
         if len(stats) < 7:
             stats = (7 - len(stats)) * [0] + stats
+        for index in range(len(stats)):
+            stats[index] *= 25
         plt.figure(figsize=(10, 6))
         week = ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su']
         plt.bar(week, stats, width=0.7, color='#0080ff', alpha=0.7)
         plt.xlabel("Day", fontsize=18)
         plt.ylabel("Status", fontsize=18)
-        #plt.grid(axis='y', linestyle='--')
+        plt.yticks([0, 25, 50, 75, 100])
         plt.title('Weekly Status Histogram', fontsize=15)
         plt.show()
