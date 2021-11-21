@@ -60,9 +60,14 @@ class RegisterWindow(Screen):
         username = str(self.ids.username.text)
         firstname = str(self.ids.firstname.text)
         lastname = str(self.ids.lastname.text)
+        gender = str(self.ids.gender.text)
+        birthday = str(self.ids.birthday.text)
+        weight = str(self.ids.weight.text)
+        height = str(self.ids.height.text)
         print(username,firstname,lastname)
-        user = User(username,firstname,lastname,"F",date.today(),50,210)
-        service.save(username,firstname,lastname,"F",date.today(),50,210)
+        birthDate = birthday.split('/')
+        user = User(username,firstname,lastname,gender,date(int(birthDate[2]),int(birthDate[1]),int(birthDate[0])),weight,height)
+        service.save(username,firstname,lastname,gender,date(int(birthDate[2]),int(birthDate[1]),int(birthDate[0])),weight,height)
         user = service.find_one_by_username(username)
 
 
