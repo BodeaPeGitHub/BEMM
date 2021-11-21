@@ -80,6 +80,7 @@ class MainWindow(Screen):
         self.ids.emojiId.source = "gui/static/emoji"+str(completedGoals)+".png"
         self.ids.statusId.source = "gui/static/status"+str(completedGoals)+".png"
     def addWater(self):
+        completedGoals = 1
         global user
         user = service.find_one_by_username(user.get_username())
         glasses = int(self.ids.mainLabelNr.text)
@@ -87,6 +88,12 @@ class MainWindow(Screen):
         print("id: ", user.get_user_id(), "glasses: ", glasses)
         service.add_glasses(user.get_user_id())
         self.ids.mainLabelNr.text = str(glasses)
+        if service.achieved_sport_habit(user.get_user_id()):
+            completedGoals+=1
+        if service.achieved_water_habit(user.get_user_id()):
+            completedGoals+=1
+        self.ids.emojiId.source = "gui/static/emoji"+str(completedGoals)+".png"
+        self.ids.statusId.source = "gui/static/status"+str(completedGoals)+".png"
 
 
 class SleepingWindow(Screen):
