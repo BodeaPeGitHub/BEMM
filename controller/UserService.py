@@ -143,9 +143,9 @@ class UserService:
             stats = (7 - len(stats)) * [0] + stats
         plt.figure(figsize=(10, 6))
         week = ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su']
-        plt.bar(week, stats, width=1, color='purple', alpha=0.7)
+        plt.bar(week, stats, width=0.7, color='#0080ff', alpha=0.7)
         plt.xlabel("Day", fontsize=18)
         plt.ylabel("Status", fontsize=18)
-
+        #plt.grid(axis='y', linestyle='--')
         plt.title('Weekly Status Histogram', fontsize=15)
         plt.show()
